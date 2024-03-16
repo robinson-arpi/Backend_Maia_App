@@ -38,9 +38,8 @@ public class AuthService {
                 .email(request.getEmail())
                 .password(passwordEncoder.encode( request.getPassword()))
                 .userRoles(new ArrayList<>())
+                .registrations(new ArrayList<>())
                 .build();
-        System.out.println("-------");
-        System.out.println(user);
 
         Role role = roleRepository.findByRoleName(request.getRol());
         if (role == null) {
