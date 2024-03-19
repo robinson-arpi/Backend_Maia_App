@@ -11,6 +11,8 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.web.cors.CorsConfiguration;
+
 
 @Configuration
 @EnableWebSecurity
@@ -25,11 +27,14 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception
     {
         return http
+                .cors(cors -> cors
+                        .configurationSource(request -> new CorsConfiguration().applyPermitDefaultValues())
+                )
                 .csrf(csrf ->
                         csrf.disable())
                 .authorizeHttpRequests(authRequest ->
                         authRequest
-                                .requestMatchers("/auth/**").permitAll()
+                                .requestMatchers("/**").permitAll()
                                 .requestMatchers(HttpMethod.GET).permitAll()
                                 .requestMatchers(HttpMethod.OPTIONS).permitAll()
                                 .anyRequest().authenticated()

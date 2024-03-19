@@ -8,7 +8,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/schedule")
@@ -18,13 +21,16 @@ public class ScheduleController {
     private ScheduleService scheduleService;
 
     @GetMapping("/{userId}")
-    public ResponseEntity<List<ScheduleResponse>> getUserSchedule(@PathVariable Integer userId) {
+    public ResponseEntity<Map<String, List<ScheduleResponse>>> getUserSchedule(@PathVariable Integer userId) {
         List<ScheduleResponse> schedules = scheduleService.getUserSchedule(userId);
 
         if (schedules.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
 
-        return new ResponseEntity<>(schedules, HttpStatus.OK);
+        Map<String, List<ScheduleResponse>> response = new HashMap<>();
+        response.put("schedule", schedules);
+
+        return new ResponseEntity<>(response, HttpStatus.OK);
     }
 }
