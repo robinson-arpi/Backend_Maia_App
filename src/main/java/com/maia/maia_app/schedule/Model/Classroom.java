@@ -1,5 +1,6 @@
 package com.maia.maia_app.schedule.Model;
 
+import com.maia.maia_app.locations.models.Floor;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -21,5 +22,7 @@ public class Classroom {
     @Column(name = "classroom_name")
     private String classroomName;
 
-    // Getters y setters
+    @ManyToOne
+    private Floor floorId;
+
 }

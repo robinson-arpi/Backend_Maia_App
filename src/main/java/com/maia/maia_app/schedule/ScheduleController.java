@@ -20,9 +20,9 @@ public class ScheduleController {
     @Autowired
     private ScheduleService scheduleService;
 
-    @GetMapping("/{userId}")
-    public ResponseEntity<Map<String, List<ScheduleResponse>>> getUserSchedule(@PathVariable Integer userId) {
-        List<ScheduleResponse> schedules = scheduleService.getUserSchedule(userId);
+    @GetMapping("/{userId}/{day}")
+    public ResponseEntity<Map<String, List<ScheduleResponse>>> getUserSchedule(@PathVariable Integer userId, @PathVariable String day) {
+        List<ScheduleResponse> schedules = scheduleService.getUserSchedule(userId, day);
 
         if (schedules.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);

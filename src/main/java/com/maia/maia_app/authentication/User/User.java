@@ -22,7 +22,7 @@ import java.util.stream.Collectors;
 @Table(name = "users", uniqueConstraints = {@UniqueConstraint(columnNames = {"user_id"})})
 public class User implements UserDetails {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "user_id")
     Integer userId;
     @Column(name = "first_name", nullable = false)

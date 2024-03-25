@@ -15,7 +15,7 @@ public class ScheduleRepository {
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
-    public List<ScheduleResponse> getUserSchedule(Integer userId) {
+    public List<ScheduleResponse> getUserSchedule(Integer userId, String day) {
         String sql = "SELECT h.schedule_id, c.subject_name, p.first_name AS ProfessorFirstName, p.last_name AS ProfessorLastName, " +
                 "a.classroom_name, h.day, bh.start_time, bh.end_time " +
                 "FROM Registrations r " +
@@ -24,9 +24,13 @@ public class ScheduleRepository {
                 "INNER JOIN Users p ON h.user_id = p.user_id " +
                 "INNER JOIN Classrooms a ON h.classroom_id = a.classroom_id " +
                 "INNER JOIN TimeBlocks bh ON h.block_id = bh.block_id " +
-                "WHERE r.user_id = ?";
+                "WHERE r.user_id = ? AND h.day = ?";
 
-        return jdbcTemplate.query(sql, new Object[]{userId}, new ScheduleResponseMapper());
+        System.out.println("SQL: " + sql);
+        System.out.println("User ID: " + userId);
+        System.out.println("Day: " + day);
+
+        return jdbcTemplate.query(sql, new Object[]{userId, day}, new ScheduleResponseMapper());
     }
 
     private class ScheduleResponseMapper implements RowMapper<ScheduleResponse> {

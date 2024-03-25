@@ -10,7 +10,7 @@ public class ScheduleService {
     @Autowired
     private ScheduleRepository scheduleRepository;
 
-    public List<ScheduleResponse> getUserSchedule(Integer userId) {
-        return scheduleRepository.getUserSchedule(userId);
+    public List<ScheduleResponse> getUserSchedule(Integer userId, String day) {
+        return scheduleRepository.getUserSchedule(userId, day);
     }
 }
