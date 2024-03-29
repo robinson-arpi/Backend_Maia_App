@@ -18,8 +18,6 @@ import org.springframework.web.cors.CorsConfiguration;
 @EnableWebSecurity
 @RequiredArgsConstructor
 public class SecurityConfig {
-
-
     private final JwtAuthFilter jwtAuthenticationFilter;
     private final AuthenticationProvider authProvider;
 
