@@ -12,11 +12,11 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "connection", uniqueConstraints = {@UniqueConstraint(columnNames = {"connection_id"})})
+@Table(name = "connections", uniqueConstraints = {@UniqueConstraint(columnNames = {"connection_id"})})
 public class Connection {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer conneciontId;
+    private Integer connectionId;
 
     @ManyToOne
     @JoinColumn(name = "origin_node")
@@ -25,4 +25,6 @@ public class Connection {
     @ManyToOne
     @JoinColumn(name = "destination_node")
     private Node destinationNode;
+
+    private String instruction;
 }
