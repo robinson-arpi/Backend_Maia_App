@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Metamodelo</title>
+
+</head>
+<body>
+<h1>Formulario de Usuario</h1>
+<form action="#" th:action="@{/guardar}" th:object="${usuario}" method="post">
+    <label for="nombre">Nombre:</label>
+    <input type="text" id="nombre" name="nombre" th:field="*{nombre}" required><br><br>
+
+    <label for="perfil.edad">Edad:</label>
+    <input type="number" id="perfil.edad" name="perfil.edad" th:field="*{perfil.edad}" required><br><br>
+
+    <label for="perfil.genero">Género:</label>
+    <input type="text" id="perfil.genero" name="perfil.genero" th:field="*{perfil.genero}" required><br><br>
+
+    <label for="perfil.nivelEducativo">Nivel Educativo:</label>
+    <input type="text" id="perfil.nivelEducativo" name="perfil.nivelEducativo" th:field="*{perfil.nivelEducativo}" required><br><br>
+
+    <label for="perfil.ocupacion">Ocupación:</label>
+    <input type="text" id="perfil.ocupacion" name="perfil.ocupacion" th:field="*{perfil.ocupacion}" required><br><br>
+
+    <label for="necesidad.tipoNecesidad">Tipo de Necesidad:</label>
+    <input type="text" id="necesidad.tipoNecesidad" name="necesidad.tipoNecesidad" th:field="*{necesidad.tipoNecesidad}" required><br><br>
+
+    <label for="necesidad.detalleNecesidad">Detalle de Necesidad:</label>
+    <input type="text" id="necesidad.detalleNecesidad" name="necesidad.detalleNecesidad" th:field="*{necesidad.detalleNecesidad}" required><br><br>
+
+    <!-- Agrega los campos de las otras clases -->
+
+    <button type="submit">Guardar</button>
+</form>
+</body>
+</html>
