@@ -5,16 +5,14 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
+import javax.xml.bind.annotation.XmlRootElement;
 
+@XmlRootElement
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class Contexto{
-    private String ubicacion;
-    private String tiempo;
-    private List<CondicionFisica> tieneCondiciones;
-    private List<Dispositivo> usaDispositivos;
-
+public class Software {
+    private String version;
+    private String configuracion;
 }

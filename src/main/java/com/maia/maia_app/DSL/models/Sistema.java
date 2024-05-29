@@ -14,5 +14,5 @@ import java.util.List;
 public class Sistema {
     private String estado;
     private String rendimiento;
-    private List<Dispositivo> dispositivos;
+    private List<Dispositivo> tieneDispositivos;
 }

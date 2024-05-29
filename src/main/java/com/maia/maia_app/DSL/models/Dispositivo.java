@@ -5,6 +5,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Data
 @Builder
 @NoArgsConstructor
@@ -13,4 +15,5 @@ public class Dispositivo {
     private int id;
     private String tipoDispositivo;
     private String estado;
+    private List<Interaccion> generaInteraccion;
 }
